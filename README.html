@@ -1,0 +1,154 @@
+<h1>sview : tiny PHP web framework</h1>
+
+<p>It is inspired by <a href="http://shortphp.com">a similar framework</a> written by Arnór Heiðar Sigurðsson. 
+In the same spirit but more advanced and more complete, see also <a href="http://nanoc.ws/">nanoc</a> - in Ruby.
+</p>
+
+<p>
+sview is designed to organize essentially static websites. 
+It does not offer the features you would expect from a complete MVC framework - 
+actually, it has only the "V" part. 
+If you want a more demanding dynamic website, consider using an appropriate tool, 
+<a href="http://symfony.com/">Symfony</a> for example.
+</p>
+
+<h2> How to use it ?</h2>
+
+<p>The file sample-website.tar.xz provides a basic but full website example. 
+Alternatively, here are some details about sview usage.
+</p>
+
+<h2>0. Installation</h2>
+
+<p>In the following, I assume your website is located under http\[s\]://domain/topic/ 
+and is named "website" (adapt to your case). For example, in https://github.com/blog/ 
+domain = github.com and topic = blog.
+</p>
+
+<p>Get the source code either with `git clone` command or using a zip archive. 
+Copy all folder contents in the website/ folder : 
+</p>
+<pre>website/
+    a/
+    f/
+    site/
+    .htaccess
+    common.php
+    defaults.php
+    index.php
+    s.php</pre>
+<ul>
+	<li><b>a/</b> (for "assets") is the folder for CSS files, images and javascript codes. 
+I like to put them respectively in css/, img/ and js/ folders, but the choice is yours.
+	<li><b>f/</b> (for "files") is the folder for any downloadable (or browsable) file you may upload. 
+	<li><b>site/</b> is the main folder containing all your website pages. Three are already there :
+ 	<ul>
+ 		<li><i>404.php</i> : the 404 error page;
+		<li><i>dl.php</i> : a script to download binary files;
+		<li><i>home.php</i> : the specifications for the welcome page.
+	</ul>
+	<li><b>.htaccess</b> : its main job consists in routing everything that is not a resource 
+to the index.php file. 
+	<li><b>common.php</b> contains shared variables and functions to be used by at least two different pages.
+	<li><b>defaults.php</b> defines default variables for any web page, like the title or javascripts block.
+	<li><b>index.php</b> contains your website template, which is rendered for any web page 
+(and filled with specific values defined in pages under site/ folder; anything can be customized).
+	<li><b>s.php</b> consists in the framework code, loaded at the beginning of index.php.
+</ul>
+
+<p>Now (online), in the .htaccess file, change the line `RewriteBase /` to `RewriteBase /topic`.
+</p>
+
+<h2>1. Set default contents</h2>
+
+<span>Edit the file defaults.php with</span>
+<ul>
+	<li>A global title to your website; this title can later be mixed with a more specific 
+page-based title, or be replaced.
+	<li>A list of references to CSS style sheets and pre-rendering javascript, like 
+<code><link rel="stylesheet" href="http://cran.r-project.org/R.css"/></code>. 
+We will see later how to refer to local style sheets (under a/css).
+	<li>Some javascript code which will be loaded by default after every page loads
+(e.g. <a href="http://jquery.com/">jquery</a>).
+</ul>
+
+<p>Each variable name is prepended with "b_" to avoid potential conflicts with your own variables.
+</p>
+
+<h2>2. Complete main pages</h2>
+
+<h3>index.php</h3>
+
+<span>Complete</span>
+<ul>
+	<li>The menu (at commented location)
+	<li>The banner (near the menu, if you want one)
+	<li>The footer (if you don't want one, just drop it).
+</ul>
+
+<p>You can also change the \<meta\> tags if needed.
+</p>
+
+<h3>site/home.php</h3>
+
+<p>The welcome page. You can choose a title ($s_title) or use the default one 
+(by not specifying anything). Style sheets and javascripts can be customized, ...etc. 
+Any default variable can be used to define a specific variable (prepended with "s_"). 
+</p>
+
+<h3>site/404.php</h3>
+
+<p>Customize it; it is probably viewed more often than you think ;-)
+</p>
+
+<h2>3. Write all other pages</h2>
+
+<p>All pages are under site/ folder, and you can nest them in any directory tree.
+</p>
+
+<p><b>Hint</b> : if you don't want to load the main template, just end any site file 
+with a PHP <code>exit</code> directive.
+</p>
+
+<p>Now we will see how to access pages and resources (images, CSS, files, javascript).
+</p>
+
+<hr>
+
+<h2>How to view a web page ?</h2>
+
+<p>The page at physical location site/some_folder/mypage.php is viewed in the web browser at the URL 
+http\[s\]://domain/topic/website/some_folder/mypage (thanks to URL rewriting defined in 
+the .htaccess file). 
+</p>
+
+<p>Any page can be linked internally using the <code>r()</code> PHP function ('r' for "resource"), like in 
+the following : <code><a href="<?php echo r('some_folder/mypage'); ?>">'</code>. This function determines 
+the nesting level and output the appropriate path.
+</p>
+
+<h2>How to access...</h2>
+
+<p><i>A CSS style sheet</i> : its path is given by the following PHP function call 
+<code>r('a/css/name_of_the_file.css')</code> from within any site file (assuming you place all CSS files 
+under a/css/. They may be inside a nested folder structure).
+</p>
+
+<p><i>An image</i> : same as above, with <code>r('a/img/name_of_the_image.xxx')</code>.
+</p>
+
+<p><i>A javascript file</i> : same as above, with <code>r('a/js/name_of_the_file.js')</code>.
+</p>
+
+<h2>How to give a download link ?</h2>
+
+<p>Just use a regular link pointing to <code>r('dl/?f=name_of_the_file.xxx')</code>, anywhere you want.
+</p>
+
+<hr>
+
+<h2>Usual workflow</h2>
+
+<p>Just add pages under site/ folder, and potential resources and files under a/ and f/. 
+All other files will not change a lot.
+</p>
