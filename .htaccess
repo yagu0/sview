@@ -1,0 +1,13 @@
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+
+	# indicate the path of your website relatively to the web root
+	RewriteBase /
+
+	# the two following conditions say "if the requested resource exist, just serve it"
+	RewriteCond %{REQUEST_FILENAME} !-f
+	RewriteCond %{REQUEST_FILENAME} !-d
+	
+	# redirect anything else to index.php (which will analyze the URI)
+	RewriteRule . index.php
+</IfModule>
