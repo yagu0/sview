@@ -1,6 +1,6 @@
 # sview : tiny PHP web framework
 
-It is inspired by [a similar framework](https://github.com/arnorhs/ShortPHP) written by Arnór Heiðar Sigurðsson. 
+It is inspired by [a similar framework](https://github.com/arnorhs/ShortPHP) written by Arn&oacute;r Hei&#240;ar Sigur&#240;sson. 
 In the same spirit but more advanced and more complete, see also [nanoc](http://nanoc.ws/) - in Ruby.
 
 sview is designed to organize essentially static websites. 
