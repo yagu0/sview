@@ -52,6 +52,7 @@ Now (online), in the .htaccess file, change the line `RewriteBase /` to `Rewrite
 ## 1. Set default contents
 
 Edit the file defaults.php with
+
 * A global title to your website; this title can later be mixed with a more specific page-based title, or be replaced.
 * A list of references to CSS style sheets and pre-rendering javascripts, like `<link rel="stylesheet" href="http://cran.r-project.org/R.css"/>`. 
 		We will see later how to refer to local style sheets (under a/css).
@@ -64,6 +65,7 @@ Each variable name is prepended with "b\_" to avoid potential conflicts with you
 ### index.php
 
 Complete
+
 * The menu (at commented location)
 * The banner (near the menu, if you want one)
 * The footer (if you don't want one, just drop it).
