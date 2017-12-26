@@ -54,8 +54,8 @@ Now (online), in the .htaccess file, change the line `RewriteBase /` to `Rewrite
 Edit the file defaults.php with
 
 * A global title to your website; this title can later be mixed with a more specific page-based title, or be replaced.
-* A list of references to CSS style sheets and pre-rendering javascripts, like `<link rel="stylesheet" href="http://cran.r-project.org/R.css"/>`. 
-		We will see later how to refer to local style sheets (under a/css).
+* A list of references to CSS stylesheets and pre-rendering javascripts, like `<link rel="stylesheet" href="http://cran.r-project.org/R.css"/>`. 
+		We will see later how to refer to local stylesheets (under a/css).
 * Some javascript code which will be loaded by default after every page loads (e.g. [jQuery](http://jquery.com/).
 
 Each variable name is prepended with "b\_" to avoid potential conflicts with your own variables.
@@ -75,7 +75,7 @@ You can also change the &lt;meta&gt; tags if needed.
 ### site/home.php
 
 The welcome page. You can choose a title ($s\_title) or use the default one 
-(by not specifying anything). Style sheets and javascripts can be customized, ...etc. 
+(by not specifying anything). Stylesheets and javascripts can be customized, ...etc. 
 Any default variable can be used to define a specific variable (prepended with "s\_").
 
 ### site/404.php
