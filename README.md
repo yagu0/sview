@@ -56,7 +56,7 @@ Edit the file defaults.php with
 * A global title to your website; this title can later be mixed with a more specific page-based title, or be replaced.
 * A list of references to CSS stylesheets and pre-rendering javascripts, like `<link rel="stylesheet" href="http://cran.r-project.org/R.css"/>`. 
 		We will see later how to refer to local stylesheets (under a/css).
-* Some javascript code which will be loaded by default after every page loads (e.g. [jQuery](http://jquery.com/).
+* Some javascript code which will be loaded by default after every page loads (e.g. [jQuery](http://jquery.com/)).
 
 Each variable name is prepended with "b\_" to avoid potential conflicts with your own variables.
 
